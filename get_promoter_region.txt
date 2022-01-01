@@ -1,0 +1,22 @@
+bedtools flank -s -l 1 -r 0 -i stranded_A.bed -g chrSizes.txt | 
+bedtools slop -l 500 -r 500 -i - -g chrSizes.txt |  bedtools sort -i - > out.srt.proms_of_A_file.bed 
+
+to calculate methylation at these regions, can pipe directly from 'bedtools sort' above into:  
+
+bedtools map -c 6 -o mean -null "NA" -a - -b some.cg.gff |  
+bedtools map -c 6 -o mean -null "NA" -a - -b someOther.cg.gff
+
+
+notes:
+
+genes file = "stranded_A.bed"
+
+for chrSizes.txt, use this format (example is A.thaliana TAIR10)
+Chr1    30427671
+Chr2    19698289
+Chr3    23459830
+Chr4    18585056
+Chr5    26975502
+ChrMt   366924
+ChrPt   154478
+
