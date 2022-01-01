@@ -1,0 +1,1 @@
+for i in `esearch -db sra -query PRJNA632034  | efetch --format runinfo | cut -d ',' -f 10 | grep 'https'`; do wget $i ; done
