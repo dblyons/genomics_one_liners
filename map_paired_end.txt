@@ -1,0 +1,6 @@
+
+for i in `cat prefixes.txt`; do bowtie2 -x  ./bowtie2_index_directory -p 10 -1 ${i}_R1_001.fastq.gz -2 ${i}_R2_001.fastq.gz | samtools view  -bSh - > ${i}.bam ; done
+
+note:
+
+generate "prefixes.txt" using script "get_fastq_prefixes..."
