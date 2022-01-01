@@ -1,0 +1,2 @@
+
+ls -l | awk '{print $9}' | perl -wnl -e '/(.*)_R.*gz/ and print $1;' | sort | uniq > prefixes.txt
