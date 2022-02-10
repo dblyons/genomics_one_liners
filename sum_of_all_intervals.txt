@@ -1,0 +1,2 @@
+
+awk '{sum+=($3-$2)} END {print sum}' <bed_file>
