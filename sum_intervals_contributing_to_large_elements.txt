@@ -1,0 +1,24 @@
+######
+## this takes a file like this:
+#Chr1	0	600	E31
+#Chr1	600	1200	E30
+#Chr1	1200	1400	E29
+
+# where there will be multiple "E30" for instance in a single gene, but discontinuously
+# and calculates the sum of 
+# all the "E30" in a particular gene, and so on for each "E" classifier
+
+bedtools intersect -wo -a long_transposons.bed -b some_bed_file_with_descriptor_in_col_4.bed | \
+sort -k1,1 -k2,2n -k8,8 | \
+bedtools groupby  -i - -g 1,2,3,4,8 -c 9 -o sum
+
+#output like this:
+#Chr1	2531450	2534781	AT1TE08240	E31	731
+#Chr1	2531450	2534781	AT1TE08240	E32	200
+#Chr1	2531450	2534781	AT1TE08240	E33	2200
+#Chr1	2531450	2534781	AT1TE08240	E34	200
+#Chr1	2788429	2800701	AT1TE09080	E30	101
+#Chr1	2788429	2800701	AT1TE09080	E31	371
+#Chr1	2788429	2800701	AT1TE09080	E32	800
+#Chr1	2788429	2800701	AT1TE09080	E33	6200
+#Chr1	2788429	2800701	AT1TE09080	E34	4800
