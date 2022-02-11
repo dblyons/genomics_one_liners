@@ -4,7 +4,7 @@
 #Chr1	600	1200	E30
 #Chr1	1200	1400	E29
 
-# where there will be multiple "E30" for instance in a single gene, but discontinuously
+# where there will be multiple "E30" for instance in a single gene (but discontinuous, so E30-gap-E30-gap-etc)
 # and calculates the sum of 
 # all the "E30" in a particular gene, and so on for each "E" classifier
 
